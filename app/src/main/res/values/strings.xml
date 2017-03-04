@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SimpleMoview</string>
+    <string name="app_name">SimpleMovie</string>
+    <string name="action_retry">Retry</string>
+    <string name="empty_movies_list_message">There are no available movies at the moment.</string>
 </resources>

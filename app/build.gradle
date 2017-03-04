@@ -11,16 +11,36 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('debug.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+        }
+    }
     buildTypes {
 
-        debug {}
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
 
-        mock {}
+        mock {
+            applicationIdSuffix ".mock"
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
 
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -30,7 +50,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile 'com.google.code.gson:gson:2.7'
+
     testCompile 'junit:junit:4.12'
 }
