@@ -2,4 +2,5 @@
     <string name="app_name">SimpleMovie</string>
     <string name="action_retry">Retry</string>
     <string name="empty_movies_list_message">There are no available movies at the moment.</string>
+    <string name="votes_count_format">(%s votes)</string>
 </resources>

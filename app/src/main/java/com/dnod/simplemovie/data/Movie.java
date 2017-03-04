@@ -9,12 +9,22 @@ public final class Movie implements Parcelable {
     private String id;
     private String mTitle;
     private String mDescription;
-    private Date mReleaseDate;
+    private String mStarring;
+    private long mReleaseDate;
     private float mPopularity;
     private int mVotesCount;
     private Images mImages;
 
     public Movie() {}
+
+    public String getStarring() {
+        return mStarring;
+    }
+
+    public Movie setStarring(String starring) {
+        this.mStarring = starring;
+        return this;
+    }
 
     public String getDescription() {
         return mDescription;
@@ -43,11 +53,11 @@ public final class Movie implements Parcelable {
         return this;
     }
 
-    public Date getReleaseDate() {
+    public long getReleaseDate() {
         return mReleaseDate;
     }
 
-    public Movie setReleaseDate(Date releaseDate) {
+    public Movie setReleaseDate(long releaseDate) {
         this.mReleaseDate = releaseDate;
         return this;
     }
@@ -83,7 +93,8 @@ public final class Movie implements Parcelable {
         id = in.readString();
         mTitle = in.readString();
         mDescription = in.readString();
-        mReleaseDate = (Date) in.readSerializable();
+        mStarring = in.readString();
+        mReleaseDate = in.readLong();
         mPopularity = in.readFloat();
         mVotesCount = in.readInt();
         mImages = in.readParcelable(Images.class.getClassLoader());
@@ -111,7 +122,8 @@ public final class Movie implements Parcelable {
         parcel.writeString(id);
         parcel.writeString(mTitle);
         parcel.writeString(mDescription);
-        parcel.writeSerializable(mReleaseDate);
+        parcel.writeString(mStarring);
+        parcel.writeLong(mReleaseDate);
         parcel.writeFloat(mPopularity);
         parcel.writeInt(mVotesCount);
         parcel.writeParcelable(mImages, i);

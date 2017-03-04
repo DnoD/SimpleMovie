@@ -9,27 +9,39 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.dnod.simplemovie.R;
+import com.dnod.simplemovie.SimpleMovieController;
 import com.dnod.simplemovie.data.Movie;
 import com.dnod.simplemovie.databinding.ActivityMainBinding;
+import com.dnod.simplemovie.ui.adapter.MoviesAdapter;
+import com.dnod.simplemovie.ui.decor.VerticalSpaceItemDecoration;
 import com.dnod.simplemovie.ui.loader.MoviesLoader;
 import com.dnod.simplemovie.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoaderManager.LoaderCallbacks {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,
+        LoaderManager.LoaderCallbacks, MoviesAdapter.Listener {
     private static final String INSTANCE_STATE_KEY = "instance_state";
 
     private ActivityMainBinding mBindingObject;
     private InstanceState mInstanceState = new InstanceState();
+    private MoviesAdapter mMoviesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBindingObject = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBindingObject.list.setLayoutManager(new LinearLayoutManager(this));
+        mBindingObject.list.addItemDecoration(new VerticalSpaceItemDecoration(
+                (int) getResources().getDimension(R.dimen.padding_mini)));
+        mBindingObject.list.setAdapter(mMoviesAdapter = new MoviesAdapter(this,
+                SimpleMovieController.getImageLoader())
+                .setListener(this));
         mBindingObject.swipeContainer.setRefreshing(false);
         mBindingObject.swipeContainer.setOnRefreshListener(this);
         mBindingObject.swipeContainer.setColorSchemeResources(R.color.colorPrimary);
@@ -38,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         }
         if (mInstanceState.movies.isEmpty()) {
             onRefresh();
+        } else {
+            mMoviesAdapter.replaceAll(mInstanceState.movies);
         }
         mBindingObject.toolbar.setTitle(R.string.app_name);
     }
@@ -71,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     mBindingObject.emptyContentMessage.setVisibility(View.VISIBLE);
                 } else {
                     mInstanceState.movies = result.getMovies();
+                    mMoviesAdapter.replaceAll(mInstanceState.movies);
                     mBindingObject.emptyContentMessage.setVisibility(View.GONE);
                 }
             } else {
@@ -88,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onLoaderReset(Loader loader) {
+
+    }
+
+    @Override
+    public void onItemClick(Movie movie) {
 
     }
 

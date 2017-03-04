@@ -3,10 +3,8 @@ package com.dnod.simplemovie.ui.loader;
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 
-import com.dnod.simplemovie.SimpleMovieMockController;
+import com.dnod.simplemovie.SimpleMovieController;
 import com.dnod.simplemovie.data.Movie;
-
-import java.util.List;
 
 public final class MovieDetailsLoader extends AsyncTaskLoader<MovieDetailsLoader.Result> {
 
@@ -27,7 +25,7 @@ public final class MovieDetailsLoader extends AsyncTaskLoader<MovieDetailsLoader
     public Result loadInBackground() {
         Result result = new Result();
         try {
-            result.movie = SimpleMovieMockController.getClientApi().getMovieDetails(mMovieId);
+            result.movie = SimpleMovieController.getClientApi().getMovieDetails(mMovieId);
         } catch (Exception e) {
             result.error = e.getLocalizedMessage();
         }
