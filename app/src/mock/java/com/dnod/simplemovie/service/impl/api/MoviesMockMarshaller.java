@@ -1,6 +1,8 @@
 package com.dnod.simplemovie.service.impl.api;
 
 
+import android.text.TextUtils;
+
 import com.dnod.simplemovie.data.Images;
 import com.dnod.simplemovie.data.Movie;
 import com.dnod.simplemovie.service.Marshaller;
@@ -23,8 +25,10 @@ final class MoviesMockMarshaller extends Marshaller<MovieMockDTO, Movie> {
                 .setImages(new Images().setOriginalUrl(entity.getOriginalCoverUrl())
                         .setThumbnailUrl(entity.getThumbnailCoverUrl()))
                 .setPopularity(entity.getPopularity())
-                .setReleaseDate(new Date(TimeUtils.getEndpointDate(entity.getReleaseDate())))
+                .setReleaseDate(TextUtils.isEmpty(entity.getReleaseDate()) ?
+                        0 : TimeUtils.getEndpointDate(entity.getReleaseDate()))
                 .setTitle(entity.getTitle())
+                .setStarring(entity.getStarring())
                 .setDescription(entity.getDescription())
                 .setVotesCount(entity.getVotesCount());
     }
