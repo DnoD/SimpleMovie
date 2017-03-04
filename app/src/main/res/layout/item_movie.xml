@@ -59,7 +59,7 @@
                 android:layout_marginTop="@dimen/margin_micro"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@{TimeUtils.formatEndpointDate(model.releaseDate)}"
+                android:text="@{TimeUtils.formatReleaseDate(model.releaseDate)}"
                 android:textColor="@android:color/white"
                 android:visibility="@{model.releaseDate == 0 ? View.GONE : View.VISIBLE}"
                 tools:text="Release date" />

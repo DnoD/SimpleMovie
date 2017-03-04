@@ -3,19 +3,51 @@ package com.dnod.simplemovie.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public final class Movie implements Parcelable {
     private String id;
     private String mTitle;
     private String mDescription;
     private String mStarring;
+    private String mGenres;
     private long mReleaseDate;
     private float mPopularity;
     private int mVotesCount;
+    private int mDuration;      //In minutes
     private Images mImages;
+    private List<Images> mScreenShots = new ArrayList<>();
 
     public Movie() {}
+
+    public int getDuration() {
+        return mDuration;
+    }
+
+    public Movie setDuration(int duration) {
+        this.mDuration = duration;
+        return this;
+    }
+
+    public String getGenres() {
+        return mGenres;
+    }
+
+    public Movie setGenres(String genres) {
+        this.mGenres = genres;
+        return this;
+    }
+
+    public List<Images> getScreenShots() {
+        return mScreenShots;
+    }
+
+    public Movie setScreenShots(List<Images> screenShots) {
+        this.mScreenShots = screenShots;
+        return this;
+    }
 
     public String getStarring() {
         return mStarring;
@@ -94,10 +126,14 @@ public final class Movie implements Parcelable {
         mTitle = in.readString();
         mDescription = in.readString();
         mStarring = in.readString();
+        mGenres = in.readString();
         mReleaseDate = in.readLong();
         mPopularity = in.readFloat();
         mVotesCount = in.readInt();
+        mDuration = in.readInt();
         mImages = in.readParcelable(Images.class.getClassLoader());
+        mScreenShots = new ArrayList<>();
+        in.readTypedList(mScreenShots, Images.CREATOR);
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -123,9 +159,12 @@ public final class Movie implements Parcelable {
         parcel.writeString(mTitle);
         parcel.writeString(mDescription);
         parcel.writeString(mStarring);
+        parcel.writeString(mGenres);
         parcel.writeLong(mReleaseDate);
         parcel.writeFloat(mPopularity);
         parcel.writeInt(mVotesCount);
+        parcel.writeInt(mDuration);
         parcel.writeParcelable(mImages, i);
+        parcel.writeTypedList(mScreenShots);
     }
 }

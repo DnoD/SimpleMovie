@@ -1,14 +1,13 @@
 {
-  "title": "First item",
+  "title": "Another item",
   "starring": "Rocky Balboa, Tony Stark, Dimon as Dimon",
   "description": "First item description",
-  "releaseDate": "2017-05-04",
-  "originalCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-3.jpg",
+  "originalCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-2.jpg",
   "thumbnailCoverUrl": "",
   "genres": "Action | Drama | Comedy",
-  "duration": 123,
-  "popularity": 4.5,
-  "votesCount": 123,
+  "duration": 143,
+  "popularity": 7.5,
+  "votesCount": 666,
   "screenShots": [
     {
       "originalUrl": "",

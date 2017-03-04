@@ -5,4 +5,5 @@ package com.dnod.simplemovie.utils;
  */
 public interface Constants {
     int MOVIES_LOADER_ID = 1;
+    int MOVIE_DETAILS_LOADER_ID = 2;
 }

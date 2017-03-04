@@ -3,4 +3,8 @@
     <string name="action_retry">Retry</string>
     <string name="empty_movies_list_message">There are no available movies at the moment.</string>
     <string name="votes_count_format">(%s votes)</string>
+    <string name="empty_movie_images_message">There are no available images</string>
+    <string name="order_timer_minutes_format">%d mins</string>
+    <string name="order_timer_hours_format">%1$d hr %2$d mins</string>
+    <string name="label_release_date">Release Date</string>
 </resources>

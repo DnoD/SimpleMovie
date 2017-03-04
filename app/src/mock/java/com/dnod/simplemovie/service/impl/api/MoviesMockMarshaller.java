@@ -9,7 +9,7 @@ import com.dnod.simplemovie.service.Marshaller;
 import com.dnod.simplemovie.service.impl.api.dto.MovieMockDTO;
 import com.dnod.simplemovie.utils.TimeUtils;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 final class MoviesMockMarshaller extends Marshaller<MovieMockDTO, Movie> {
 
@@ -30,6 +30,10 @@ final class MoviesMockMarshaller extends Marshaller<MovieMockDTO, Movie> {
                 .setTitle(entity.getTitle())
                 .setStarring(entity.getStarring())
                 .setDescription(entity.getDescription())
+                .setGenres(entity.getGenres())
+                .setDuration(entity.getDuration())
+                .setScreenShots((entity.getScreenShots() != null) ?
+                        ImagesMockMarshaller.getInstance().fromEntities(entity.getScreenShots()) : new ArrayList<Images>())
                 .setVotesCount(entity.getVotesCount());
     }
 
