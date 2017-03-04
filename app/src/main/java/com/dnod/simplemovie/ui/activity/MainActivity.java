@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,7 +54,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         } else {
             mMoviesAdapter.replaceAll(mInstanceState.movies);
         }
-        mBindingObject.toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(mBindingObject.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.app_name);
+        }
     }
 
     @Override
@@ -108,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onItemClick(Movie movie) {
-
+        startActivity(MovieDetailsActivity.createIntent(this, movie));
     }
 
     private static final class InstanceState implements Parcelable {

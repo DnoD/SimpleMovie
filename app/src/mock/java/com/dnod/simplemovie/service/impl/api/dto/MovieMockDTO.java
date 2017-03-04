@@ -1,5 +1,7 @@
 package com.dnod.simplemovie.service.impl.api.dto;
 
+import java.util.List;
+
 public final class MovieMockDTO {
     private String id;
     private String title;
@@ -8,8 +10,23 @@ public final class MovieMockDTO {
     private String releaseDate;
     private String originalCoverUrl;
     private String thumbnailCoverUrl;
+    private String genres;
+    private List<ImagesMockDTO> screenShots;
     private float popularity;
     private int votesCount;
+    private int duration;   //In minutes
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public List<ImagesMockDTO> getScreenShots() {
+        return screenShots;
+    }
 
     public String getStarring() {
         return starring;

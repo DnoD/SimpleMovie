@@ -16,6 +16,7 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MockClientApiImpl implements IClientApi {
 
@@ -43,7 +44,10 @@ public class MockClientApiImpl implements IClientApi {
 
     @Override
     public Movie getMovieDetails(String movieId) {
-        InputStream raw = mContext.getResources().openRawResource(R.raw.movie_details);
+        int randomIdx = new Random().nextInt() % 3;
+        int resourceId = randomIdx == 0 ? R.raw.movie_details :
+                randomIdx == 1 ? R.raw.movie_details2 : R.raw.movie_details3;
+        InputStream raw = mContext.getResources().openRawResource(resourceId);
         Reader rd = new BufferedReader(new InputStreamReader(raw));
         MovieMockDTO dto = mGson.fromJson(rd, MovieMockDTO.class);
         return MoviesMockMarshaller.getInstance().fromEntity(dto);
