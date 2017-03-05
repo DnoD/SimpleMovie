@@ -15,10 +15,26 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class MockClientApiImpl implements IClientApi {
+    private static final Map<String, Integer> MOCK_MOVIE_RESOURCES;
+
+    static {
+        MOCK_MOVIE_RESOURCES = new HashMap<>();
+        MOCK_MOVIE_RESOURCES.put("1", R.raw.movie_details1);
+        MOCK_MOVIE_RESOURCES.put("2", R.raw.movie_details2);
+        MOCK_MOVIE_RESOURCES.put("3", R.raw.movie_details3);
+        MOCK_MOVIE_RESOURCES.put("4", R.raw.movie_details4);
+        MOCK_MOVIE_RESOURCES.put("5", R.raw.movie_details5);
+        MOCK_MOVIE_RESOURCES.put("6", R.raw.movie_details6);
+        MOCK_MOVIE_RESOURCES.put("7", R.raw.movie_details7);
+        MOCK_MOVIE_RESOURCES.put("8", R.raw.movie_details8);
+        MOCK_MOVIE_RESOURCES.put("9", R.raw.movie_details9);
+    }
 
     private final Gson mGson;
     private final Context mContext;
@@ -44,10 +60,7 @@ public class MockClientApiImpl implements IClientApi {
 
     @Override
     public Movie getMovieDetails(String movieId) {
-        int randomIdx = new Random().nextInt() % 3;
-        int resourceId = randomIdx == 0 ? R.raw.movie_details :
-                randomIdx == 1 ? R.raw.movie_details2 : R.raw.movie_details3;
-        InputStream raw = mContext.getResources().openRawResource(resourceId);
+        InputStream raw = mContext.getResources().openRawResource(MOCK_MOVIE_RESOURCES.get(movieId));
         Reader rd = new BufferedReader(new InputStreamReader(raw));
         MovieMockDTO dto = mGson.fromJson(rd, MovieMockDTO.class);
         return MoviesMockMarshaller.getInstance().fromEntity(dto);

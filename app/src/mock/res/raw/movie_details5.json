@@ -1,0 +1,13 @@
+{
+  "id": "5",
+  "title": "Fifth item",
+  "starring": "Rocky Balboa, Tony Stark, Dimon as Dimon",
+  "releaseDate": "2017-05-04",
+  "thumbnailCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-5.jpg",
+  "popularity": 5,
+  "votesCount": 12,
+  "description": "Some item description",
+  "originalCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-5.jpg",
+  "genres": "Action | Drama | Comedy",
+  "duration": 113
+}

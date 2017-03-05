@@ -1,15 +1,15 @@
 {
-  "id": "2",
-  "title": "Second item",
+  "id": "8",
+  "title": "Eighth item",
   "starring": "Rocky Balboa, Tony Stark, Dimon as Dimon",
   "releaseDate": "2017-05-04",
-  "thumbnailCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-2.jpg",
-  "popularity": 2.5,
-  "votesCount": 23,
-  "description": "First item description",
-  "originalCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-2.jpg",
+  "thumbnailCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-8.jpg",
+  "popularity": 1,
+  "votesCount": 26,
+  "description": "Some item description",
+  "originalCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-8.jpg",
   "genres": "Action | Drama | Comedy",
-  "duration": 143,
+  "duration": 113,
   "screenShots": [
     {
       "originalUrl": "",

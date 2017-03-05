@@ -1,0 +1,26 @@
+{
+  "id": "6",
+  "title": "Sixth item",
+  "starring": "Rocky Balboa, Tony Stark, Dimon as Dimon",
+  "thumbnailCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-6.jpg",
+  "popularity": 4,
+  "votesCount": 128,
+  "description": "Some item description",
+  "originalCoverUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-6.jpg",
+  "genres": "Action | Drama | Comedy",
+  "duration": 113,
+  "screenShots": [
+    {
+      "originalUrl": "",
+      "thumbnailUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-1.jpg"
+    },
+    {
+      "originalUrl": "",
+      "thumbnailUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-2.jpg"
+    },
+    {
+      "originalUrl": "",
+      "thumbnailUrl": "http://tusimagenesde.com/wp-content/uploads/2015/02/bender-3.jpg"
+    }
+  ]
+}
