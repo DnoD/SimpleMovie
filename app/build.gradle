@@ -1,10 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+
 group='com.github.DnoD'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    publishNonDefault true
     defaultConfig {
         applicationId "com.dnod.simplemoview"
         minSdkVersion 15
